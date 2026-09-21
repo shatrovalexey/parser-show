@@ -1,0 +1,41 @@
+{
+	"manifest_version": 3,
+	"name": "tonerservice.ru",
+	"version": "1.0",
+	"description": "Собирает данные товаров с tonerservice.ru",
+	"permissions": [
+		"alarms",
+		"activeTab",
+		"storage",
+		"downloads",
+		"scripting",
+		"webRequest",
+		"webNavigation",
+		"declarativeNetRequest"
+	],
+	"host_permissions": [
+		"*://tonerservice.ru/*"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"*://tonerservice.ru/skupka-kartridzhey/*"
+			],
+			"js": ["content.js"],
+			"run_at": "document_idle"
+		}
+	],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"injected.js"
+			],
+			"matches": [
+				"*://rashod.ru/*"
+			]
+		}
+	]
+}
